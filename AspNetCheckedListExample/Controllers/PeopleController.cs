@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using System.Web.UI.WebControls;
 using AspNetCheckedListExample.Models;
 
 namespace AspNetCheckedListExample.Controllers
@@ -10,6 +11,7 @@ namespace AspNetCheckedListExample.Controllers
     public class PeopleController : Controller
     {
         TestData Db = new TestData();
+        IEnumerable<int> items = new List<int>();
 
         public ActionResult Index()
         {
@@ -29,11 +31,12 @@ namespace AspNetCheckedListExample.Controllers
 
 
         [HttpPost]
-        public ActionResult SubmitSelected(PeopleSelectionViewModel model)
+        public ActionResult SubmitSelected(PeopleSelectionViewModel model, string comentarioR)
         {
             // get the ids of the items selected:
             var selectedIds = model.getSelectedIds();
 
+            items = selectedIds;
             // Use the ids to retrieve the records for the selected people
             // from the database:
             var selectedPeople = from x in Db.People
@@ -50,6 +53,13 @@ namespace AspNetCheckedListExample.Controllers
             // Redirect somewhere meaningful (probably to somewhere showing 
             // the results of your processing):
             return RedirectToAction("Index");
+            //return PartialView("_EditarPartial");
         }
-	}
+
+        public ActionResult Editar()
+        {
+            var persona = items;
+            return PartialView("_editar");
+        }
+    }
 }

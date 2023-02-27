@@ -9,7 +9,9 @@
     <td>
         @Html.HiddenFor(model => model.Id)
     </td>
-
+    <td>
+        @Html.ActionLink("Detalle", "Detalle", new { id = Model.Id })
+    </td>
     <td>
         @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
         @Html.ActionLink("Details", "Details", new { id = Model.Id }) |
