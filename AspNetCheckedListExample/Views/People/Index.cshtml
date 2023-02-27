@@ -27,22 +27,25 @@
             </tr>
             @Html.EditorFor(model => model.People)
         </table>
-    @*Close the "checkboxes" div element:*@
+        @*Close the "checkboxes" div element:*@
     </div>
     <hr />
     <br />
-    <input type="submit" name="operation" id="submit" value="Submit Selected" />
+    <a id="persona_" data-toggle="modal" data-target="#ModelEditar" class="btn btn-default btn-sm editar" href="javascript:;"><span class="glyphicon glyphicon-edit" aria-hidden="true"></span></a>
+        <input type="submit" name="operation" id="submit" value="Submit Selected" />
+     @Html.Partial("_editar")
 }
 
 @section Scripts {
-    @Scripts.Render("~/bundles/jqueryval")
+
+    @*@Scripts.Render("~/bundles/jqueryval")*@
 
     <script type="text/javascript">
 
         function toggleChecked(status) {
             $("#checkboxes input").each(function () {
 
-                // Set the checked status of each to match the 
+                // Set the checked status of each to match the
                 // checked status of the check all checkbox:
                 $(this).prop("checked", status);
             });
@@ -60,6 +63,24 @@
                 toggleChecked(status);
             });
         });
+
     </script>
+
+    <script>
+        $(document).ready(function () {
+
+            $("#Rechazar").fadeOut();    //Oculta el fieldset
+        }
+
+            $("#btnRechazar").click(function (e) {
+            e.preventDefault();
+            var content = $("#Rechazar").html();
+            $('#divModalLead').html('<a class="close-reveal-modal" aria-label="Close">&#215;</a>');
+            $('#divModalLead').append(content);
+            $('#divModalLead').foundation('reveal', 'open');
+        });                  //Funcion que se ejecuta al presionar el boton "Rechazar"
+)
+    </script>
+
 }
 

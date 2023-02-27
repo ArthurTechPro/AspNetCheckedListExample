@@ -1,0 +1,20 @@
+﻿<div class="modal fade" id="ModelEditar" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog mod" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title text-center" id="myModalLabel"> Editar Persona</h4>
+            </div>
+            div class="large-6 columns">
+            <div id="otherType">
+                Comentario :
+
+                @Html.TextArea("comentarioR", null, new { cols = "55", rows = "7" })
+            </div>
+            <ul class="stack-for-small secondary button-group round">
+                <li>
+                <button type="submit" >Rechazar Oportunidad</button></li>
+            </ul>
+            <div id="edit-person-container"></div>
+        </div>
+    </div>
